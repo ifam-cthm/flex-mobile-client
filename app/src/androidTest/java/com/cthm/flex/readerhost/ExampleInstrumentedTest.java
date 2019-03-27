@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.flex.readerhost", appContext.getPackageName());
+        assertEquals("com.cthm.flex.readerhost", appContext.getPackageName());
     }
 }
