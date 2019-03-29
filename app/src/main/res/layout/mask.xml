@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="10dip">
+	<RadioGroup
+		android:id="@+id/radio_group_type"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:checkedButton="@+id/Mask"
+		>
+		<LinearLayout
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="10px">
+    		<RadioButton
+				android:id="@+id/radio_access_tag"
+				android:layout_width="40dip"
+				android:layout_height="wrap_content"
+				android:text="" />
+			<TextView
+				android:id="@+id/label_tag"
+		    	android:layout_width="fill_parent"
+		    	android:layout_height="wrap_content"
+		    	android:textColor="#ffff00"
+		    	android:textSize="20dip"
+		    	android:text="Access Tag ID" />
+		</LinearLayout>
+		<LinearLayout
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="10px">
+			<EditText
+				android:id="@+id/edt_tag"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:textSize="14dip" 
+				android:digits="1234567890abcdefABCDEF"
+				android:text="tag" />
+		</LinearLayout>
+		
+		<View android:layout_height="1px"
+			  android:background="#8f8f8f" />
+			  
+		<LinearLayout
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_margin="10px">
+			<RadioButton
+					android:id="@+id/radio_select_mask"
+					android:layout_width="40dip"
+					android:layout_height="wrap_content"
+					android:text="" />
+			<TextView
+		    	android:layout_width="fill_parent"
+		    	android:layout_height="wrap_content"
+		    	android:textColor="#ffff00"
+		    	android:textSize="20dip"
+		    	android:text="Select Mask" 
+		    	android:id="@+id/label_mask"
+		    	android:layout_marginLeft="10px"/>
+	    </LinearLayout>
+	    
+		<LinearLayout
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft ="10px">
+			<Spinner
+				android:id="@+id/spin_bank"
+				android:layout_width="150dip"
+				android:layout_height="wrap_content"
+				android:entries="@array/spinner_bank"
+				android:prompt="@string/spin_prompt_bank"/>
+			<EditText
+				android:id="@+id/edt_offset"
+				android:layout_width="70dip"
+				android:layout_height="wrap_content" 
+				android:gravity = "center"
+				android:text="00" />
+			<EditText
+				android:id="@+id/edt_bits"
+				android:layout_width="70dip"
+				android:layout_height="wrap_content"
+				android:gravity = "center"
+				android:text="16" />
+		</LinearLayout>
+		<LinearLayout
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:layout_marginLeft="10px"
+    		android:layout_marginRight="10px">
+			<EditText
+				android:id="@+id/edt_pattern"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content" 
+				android:text="0000" />
+		</LinearLayout>
+		
+		<View android:layout_height="1px"
+			  android:background="#8f8f8f" />
+		<Button android:id="@+id/btn_exit"
+				android:layout_width = "150dip"
+				android:layout_height = "wrap_content"
+				android:layout_gravity="center"
+				android:layout_marginTop = "10px" 
+				android:text="Exit"/>
+	</RadioGroup>
+</LinearLayout>

@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    
+    <!-- Link Layout -->
+    <LinearLayout android:id="@+id/opt_link"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:orientation = "vertical"
+    	>
+    	<ListView android:id="@+id/list_btdevice" 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="12"
+		/>
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1">
+			<Button android:id="@+id/btn_scan"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:layout_weight="1"
+				android:text="Scan" />
+			<Button android:id="@+id/btn_disconnect"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:layout_weight="1"
+				android:text="Disconnect" />
+		</LinearLayout>
+    </LinearLayout>
+    
+    <!-- Inventory Layout -->
+    <LinearLayout android:id="@+id/opt_inventory"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:orientation = "vertical" >
+    	<LinearLayout
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:orientation = "horizontal"
+    		android:layout_weight="1">
+    		<LinearLayout
+    			android:layout_width="80dip"
+    			android:layout_height="fill_parent"
+    			android:orientation="vertical">
+    			<LinearLayout
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content">
+    				<TextView
+    					android:layout_width="25dip"
+	    				android:layout_height="25dip"
+	    				android:textSize="12dip"
+	    				android:gravity="center"
+	    				android:text="On"/>
+	    			<TextView
+    					android:layout_width="25dip"
+	    				android:layout_height="25dip"
+	    				android:textSize="12dip"
+	    				android:gravity="center"
+	    				android:text="Tx"/>
+	    			<TextView
+    					android:layout_width="25dip"
+	    				android:layout_height="25dip"
+	    				android:textSize="12dip"
+	    				android:gravity="center"
+	    				android:text="Rx"/>
+    			</LinearLayout>
+    			<LinearLayout
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content">
+	    			<com.dotel.rfid.LampView
+	    				android:id="@+id/invent_lamp_on"
+	    				android:gravity="center"
+	    				android:layout_width="25dip"
+	    				android:layout_height="25dip"/>
+	    			<com.dotel.rfid.LampView
+	    				android:id="@+id/invent_lamp_tx"
+	    				android:gravity="center"
+	    				android:layout_width="25dip"
+	    				android:layout_height="25dip"/>
+	    			<com.dotel.rfid.LampView
+	    				android:id="@+id/invent_lamp_rx"
+	    				android:gravity="center"
+	    				android:layout_width="25dip"
+	    				android:layout_height="25dip"/>
+	    		</LinearLayout>
+    		</LinearLayout>
+    		<Button android:id="@+id/btn_inventory"
+    			android:layout_width="wrap_content"
+    			android:layout_height="fill_parent"
+    			android:layout_weight="3"
+    			android:textSize="20dip"
+    			android:text="INVENTORY" />
+    		<TextView android:id="@+id/txt_tagcount"
+    			android:layout_width="wrap_content"
+    			android:layout_height="fill_parent"
+    			android:layout_weight="2"
+    			android:textSize="50dip"
+    			android:gravity="center"
+    			android:text="0" />
+    	</LinearLayout>
+    	<ListView android:id="@+id/list_tag" 
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight="16"
+		/>
+    </LinearLayout>
+    
+    <!-- Access Layout -->
+    <LinearLayout android:id="@+id/opt_access"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent" 
+    	android:orientation="vertical">
+
+		<!-- 상단 버튼영역 -->
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal" >
+			<LinearLayout
+    			android:layout_width="80dip"
+    			android:layout_height="fill_parent"
+    			android:orientation="vertical">
+    			<LinearLayout
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content">
+    				<TextView
+    					android:layout_width="25dip"
+	    				android:layout_height="25dip"
+	    				android:textSize="12dip"
+	    				android:gravity="center"
+	    				android:text="On"/>
+	    			<TextView
+    					android:layout_width="25dip"
+	    				android:layout_height="25dip"
+	    				android:textSize="12dip"
+	    				android:gravity="center"
+	    				android:text="Tx"/>
+	    			<TextView
+    					android:layout_width="25dip"
+	    				android:layout_height="25dip"
+	    				android:textSize="12dip"
+	    				android:gravity="center"
+	    				android:text="Rx"/>
+    			</LinearLayout>
+    			<LinearLayout
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content">
+	    			<com.dotel.rfid.LampView
+	    				android:id="@+id/access_lamp_on"
+	    				android:gravity="center"
+	    				android:layout_width="25dip"
+	    				android:layout_height="25dip"/>
+	    			<com.dotel.rfid.LampView
+	    				android:id="@+id/access_lamp_tx"
+	    				android:gravity="center"
+	    				android:layout_width="25dip"
+	    				android:layout_height="25dip"/>
+	    			<com.dotel.rfid.LampView
+	    				android:id="@+id/access_lamp_rx"
+	    				android:gravity="center"
+	    				android:layout_width="25dip"
+	    				android:layout_height="25dip"/>
+	    		</LinearLayout>
+    		</LinearLayout>
+			<Button android:id="@+id/btn_access"
+				android:layout_width="140dip"
+				android:layout_height="60dip"
+				android:textSize="20dip"
+				android:text="Access" />
+			<LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:orientation="vertical">
+				<TextView android:id="@+id/txt_tagcount"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:textSize="16dip"
+					android:text="Password" />
+				<EditText android:id="@+id/edt_password"
+					android:layout_width="fill_parent"
+					android:layout_height="40dip"
+					android:layout_weight="1"
+					android:digits="1234567890abcdefABCDEF"
+					android:maxLength="8" 
+					android:textSize="16dip" />
+		  	</LinearLayout>
+		</LinearLayout>
+		
+		<!-- Read, Write.. 라디오버튼/Access Tag ID 영역-->
+    	<LinearLayout 
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:orientation="vertical" >
+    		<LinearLayout 
+    			android:layout_width="fill_parent"
+    			android:layout_height="wrap_content"
+    			android:orientation="horizontal" >
+    			<RadioGroup
+					android:id="@+id/radio_group_type"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:orientation="horizontal"
+					android:checkedButton="@+id/Type">
+					<RadioButton
+						android:id="@+id/radio_read"
+						android:layout_width="80dip"
+						android:layout_height="wrap_content"
+						android:text="Read" />
+					<RadioButton
+						android:id="@+id/radio_write"
+						android:layout_width="80dip"
+						android:layout_height="wrap_content"
+						android:text="Write" />
+					<RadioButton
+						android:id="@+id/radio_lock"
+						android:layout_width="80dip"
+						android:layout_height="wrap_content"
+						android:text="Lock" />
+					<RadioButton
+						android:id="@+id/radio_kill"
+						android:layout_width="80dip"
+						android:layout_height="wrap_content"
+						android:text="Kill" />
+				</RadioGroup>
+    		</LinearLayout>
+    		<LinearLayout 
+    			android:layout_width="fill_parent"
+    			android:layout_height="wrap_content"
+    			android:orientation="vertical" >
+    			<TextView
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content"
+    				android:text="Access Tag ID"
+    				android:textColor = "#ffff00"
+    				android:textSize="12dip" 
+    				android:layout_marginLeft ="10dip"/>
+    			<LinearLayout 
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content"
+    				android:orientation="horizontal"
+    				android:gravity="center"
+    				android:layout_marginLeft ="10dip" >
+    				<RadioButton
+    					android:id="@+id/radio_tag"
+    					android:enabled="false"
+    					android:layout_width="60px"
+    					android:layout_height="40dip"/>
+    				<EditText
+    					android:id="@+id/edt_tag"
+    					android:textSize="16dip"
+    					android:layout_width="fill_parent"
+    					android:digits="1234567890abcdefABCDEF"
+    					android:layout_height="40dip"/>    					
+    			</LinearLayout>
+    		</LinearLayout>
+    	</LinearLayout>
+
+		<!-- Read, Write.. 에 따른 변경 영역-->
+   		<FrameLayout
+   			android:layout_width="fill_parent"
+   			android:layout_height="wrap_content" >
+   			<LinearLayout android:id="@+id/layout_read_write"
+   				android:layout_width="fill_parent"
+   				android:layout_height="fill_parent"
+   				android:orientation="vertical" >
+   				<TextView
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content"
+    				android:text="Access Location Pattern"
+    				android:textColor = "#ffff00"
+    				android:textSize="12dip" 
+    				android:layout_marginLeft ="10dip"/>
+   				<LinearLayout
+   					android:layout_width="fill_parent"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="1"
+   					android:orientation="horizontal"
+   					android:gravity="left" >
+   					<com.dotel.rfid.LampView
+	    				android:id="@+id/detect_lamp_readwrite"
+	    				android:layout_marginTop="12dip"
+	    				android:gravity="center"
+	    				android:layout_width="25dip"
+	    				android:layout_height="25dip"/>
+   					<TextView 
+   						android:layout_width="50dip"
+   						android:layout_height="wrap_content"
+   						android:gravity="left|center"
+   						android:text="Detect" />
+   					<Spinner
+   						android:id="@+id/spin_epc"
+   						android:layout_width="140dip"
+   						android:layout_height="wrap_content" 
+   						android:entries="@array/spinner_access_epc"
+   						android:prompt="@string/prompt_access_epc"/>
+   					<EditText
+   						android:id="@+id/edt_tag_mem_offset"
+   						android:layout_width="60dip"
+   						android:digits="1234567890abcdefABCDEF"
+   						android:layout_height="wrap_content" />
+   					<EditText
+   						android:id="@+id/edt_tag_mem_wordcount"
+   						android:layout_width="60dip"
+   						android:digits="1234567890abcdefABCDEF"
+   						android:layout_height="wrap_content" />
+   				</LinearLayout>
+   				<LinearLayout
+   					android:layout_width="fill_parent"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="1"
+   					android:orientation="horizontal" 
+   					android:gravity="left">
+   					<com.dotel.rfid.LampView
+	    				android:id="@+id/status_lamp_readwrite"
+	    				android:layout_marginTop="12dip"
+	    				android:gravity="center"
+	    				android:layout_width="25dip"
+	    				android:layout_height="25dip"/>
+   					<TextView 
+   						android:layout_width="50dip"
+   						android:layout_height="fill_parent"
+   						android:text="Status"
+   						android:gravity="left|center" />
+   					<EditText
+   						android:id="@+id/edt_tag_mem_data"
+   						android:textSize="16dip"
+   						android:digits="1234567890abcdefABCDEF"
+   						android:layout_width="fill_parent"
+   						android:layout_height="wrap_content" />
+   				</LinearLayout>
+   			</LinearLayout>
+
+   			<LinearLayout android:id="@+id/layout_lock"
+   				android:layout_width="fill_parent"
+   				android:layout_height="fill_parent" 
+   				android:orientation="vertical">
+   				<TextView
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content"
+    				android:text="Lock Field"
+    				android:textColor = "#ffff00"
+    				android:textSize="12dip" 
+    				android:layout_marginLeft ="10dip"/>
+    			
+    			<FrameLayout
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content">
+	    			<LinearLayout
+	    				android:id="@+id/layout_lock_page1"
+	    				android:layout_width="fill_parent"
+	   					android:layout_height="wrap_content"
+	   					android:layout_weight="1"
+	   					android:orientation="vertical" >
+		   				<LinearLayout
+		   					android:layout_width="fill_parent"
+		   					android:layout_height="wrap_content"
+		   					android:layout_weight="1"
+		   					android:orientation="horizontal" >
+		   					<com.dotel.rfid.LampView
+			    				android:id="@+id/detect_lamp_lock"
+			    				android:layout_marginTop="12dip"
+			    				android:gravity="center"
+			    				android:layout_width="25dip"
+			    				android:layout_height="25dip"/>
+		   					<TextView 
+		   						android:layout_width="50dip"
+		   						android:layout_height="fill_parent"
+		   						android:gravity="left|center"
+		   						android:text="Detect" />
+		   					<Spinner
+		   						android:id="@+id/spin_kill_pwd"
+		   						android:layout_width="fill_parent"
+		   						android:layout_height="wrap_content" 
+		   						android:entries="@array/spinner_lock_kill_pwd"
+   								android:prompt="@string/prompt_lock_kill_pwd"/>
+		   				</LinearLayout>
+		   				<LinearLayout
+		   					android:layout_width="fill_parent"
+		   					android:layout_height="wrap_content"
+		   					android:layout_weight="1"
+		   					android:orientation="horizontal" >
+		   					<com.dotel.rfid.LampView
+			    				android:id="@+id/status_lamp_lock"
+			    				android:layout_marginTop="12dip"
+			    				android:gravity="center"
+			    				android:layout_width="25dip"
+			    				android:layout_height="25dip"/>
+		   					<TextView 
+		   						android:layout_width="50dip"
+		   						android:layout_height="fill_parent"
+		   						android:gravity="left|center"
+		   						android:text="Status" />
+		   					<Spinner
+		   						android:id="@+id/spin_access_pwd"
+		   						android:layout_width="fill_parent"
+		   						android:layout_height="wrap_content"
+		   						android:entries="@array/spinner_lock_access_pwd"
+   								android:prompt="@string/prompt_lock_access_pwd" />
+		   				</LinearLayout>
+	   				</LinearLayout>
+	   				<LinearLayout
+	   					android:id="@+id/layout_lock_page2"
+	    				android:layout_width="fill_parent"
+	   					android:layout_height="wrap_content"
+	   					android:layout_weight="1"
+	   					android:orientation="vertical" >
+		   				<Spinner
+		   					android:id="@+id/spin_uii_mem"
+		   					android:layout_marginLeft="60dip"
+		   					android:layout_width="fill_parent"
+		   					android:layout_height="fill_parent" 
+		   					android:entries="@array/spinner_lock_uii_mem"
+   							android:prompt="@string/prompt_lock_uii_mem"/>
+		   				<Spinner
+		   					android:id="@+id/spin_tid_mem"
+		   					android:layout_marginLeft="60dip"
+		   					android:layout_width="fill_parent"
+		   					android:layout_height="fill_parent" 
+		   					android:entries="@array/spinner_lock_tid_mem"
+   							android:prompt="@string/prompt_lock_tid_mem"/>
+		   				<Spinner
+		   					android:id="@+id/spin_user_mem"
+		   					android:layout_marginLeft="60dip"
+		   					android:layout_width="fill_parent"
+		   					android:layout_height="fill_parent" 
+		   					android:entries="@array/spinner_lock_user_mem"
+   							android:prompt="@string/prompt_lock_user_mem"/>
+		   			</LinearLayout>
+	   			</FrameLayout>
+	   			<!-- 
+	   			<Button android:id="@+id/btn_more"
+		   			android:layout_width="100dip"
+		   			android:layout_height="60dip" 
+		   			android:text="more>>"/>
+		   		 -->
+   			</LinearLayout>
+
+   			<LinearLayout android:id="@+id/layout_kill"
+   				android:layout_width="fill_parent"
+   				android:layout_height="fill_parent" 
+   				android:orientation="vertical">
+   				<TextView
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content"
+    				android:text="Kill Field"
+    				android:textColor = "#ffff00"
+    				android:textSize="12dip" 
+    				android:layout_marginLeft ="10dip"/>
+    			<LinearLayout
+   					android:layout_width="fill_parent"
+   					android:layout_height="30dip"
+   					android:layout_weight="1"
+   					android:orientation="horizontal" >
+   					<com.dotel.rfid.LampView
+	    				android:id="@+id/detect_lamp_kill"
+	    				android:layout_marginTop="3dip"
+	    				android:gravity="center"
+	    				android:layout_width="25dip"
+	    				android:layout_height="25dip"/>
+   					<TextView 
+   						android:layout_width="50dip"
+   						android:layout_height="fill_parent"
+   						android:gravity="left|center"
+   						android:text="Detect" />
+   					<TextView 
+   						android:layout_width="150dip"
+   						android:layout_height="fill_parent"
+   						android:text="Kill PWD" />
+   					<TextView 
+   						android:layout_width="150px"
+   						android:layout_height="fill_parent"
+   						android:text="Authorization" />
+   				</LinearLayout>
+   				<LinearLayout
+   					android:layout_width="fill_parent"
+   					android:layout_height="wrap_content"
+   					android:layout_weight="1"
+   					android:orientation="horizontal" >
+   					<com.dotel.rfid.LampView
+	    				android:id="@+id/status_lamp_kill"
+	    				android:layout_marginTop="12dip"
+	    				android:gravity="center"
+	    				android:layout_width="25dip"
+	    				android:layout_height="25dip"/>
+   					<TextView 
+   						android:layout_width="50dip"
+   						android:layout_height="fill_parent"
+   						android:gravity="left|center"
+   						android:text="Status" />
+   					<EditText 
+   						android:id="@+id/edt_kill_password"
+   						android:layout_width="120dip"
+   						android:layout_height="wrap_content"
+   						android:maxLength="8"
+   						android:digits="1234567890abcdefABCDEF"
+   						android:text="00000000" />
+   					<EditText 
+   						android:id="@+id/edt_user_password"
+   						android:layout_width="120dip"
+   						android:layout_height="wrap_content"
+   						android:text="" />
+   				</LinearLayout>
+   			</LinearLayout>
+   		</FrameLayout>
+
+		<!-- 하단 Mask, Exit 영역-->
+   		<LinearLayout 
+   			android:layout_width="fill_parent"
+   			android:layout_height="fill_parent"
+   			android:orientation="horizontal" 
+   			android:layout_gravity="bottom"
+   			android:gravity="center">
+   			<Button android:id="@+id/btn_more"
+		   			android:layout_width="100dip"
+		   			android:layout_height="40dip" 
+		   			android:textSize="14dip"
+		   			android:text="more>>"/>
+   			<Button android:id="@+id/btn_mask"
+   				android:layout_width="100dip"
+   				android:layout_height="40dip"
+   				android:textSize="14dip" 
+   				android:text="MASK" />
+   		</LinearLayout>
+    </LinearLayout>
+    
+    <!-- Config Layout -->
+    <LinearLayout android:id="@+id/opt_config"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent" 
+    	android:orientation="vertical">
+    	<LinearLayout
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content" >
+    		<LinearLayout
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content" 
+    			android:orientation="vertical">
+    			<CheckBox
+    				android:id="@+id/chk_auto_link"
+    				android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:text="auto link" />
+    			<CheckBox
+    				android:id="@+id/chk_detect_sound"
+    				android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:text="detect sound" />
+    			<CheckBox
+    				android:id="@+id/chk_skip_same"
+    				android:layout_width="wrap_content"
+    				android:layout_height="wrap_content" 
+    				android:text="skip same"/>
+    			<CheckBox
+    				android:id="@+id/chk_single_tag"
+    				android:layout_width="wrap_content"
+    				android:layout_height="wrap_content" 
+    				android:text="single tag"/>
+    			<CheckBox
+    				android:id="@+id/chk_continuous"
+    				android:layout_width="wrap_content"
+    				android:layout_height="wrap_content" 
+    				android:enabled="false"
+    				android:text="continuous"/>
+    		</LinearLayout>
+    		<LinearLayout
+    			android:layout_width="fill_parent"
+    			android:layout_height="wrap_content" 
+    			android:orientation="vertical"
+    			android:layout_marginLeft="10px">
+    			<TextView
+    				android:layout_width="wrap_content"
+    				android:layout_height="wrap_content"
+    				android:text = "Query Parameter"
+    				android:textColor="#ffff00" />
+   				<TextView
+   					android:layout_width="wrap_content"
+   					android:layout_height="wrap_content"
+   					android:text = "SESSION"/>
+    			<LinearLayout
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content" 
+    				android:gravity="center">
+    				<Spinner
+    					android:id="@+id/spin_query_session"
+    					android:layout_width="wrap_content"
+    					android:layout_height="fill_parent"
+    					android:entries="@array/spin_config_query_session"
+    					android:prompt="@string/prompt_config_query_session" />
+    				<Spinner
+    					android:id="@+id/spin_target_ab"
+    					android:layout_width="fill_parent"
+    					android:layout_height="fill_parent"
+    					android:entries="@array/spin_config_target_ab"
+    					android:prompt="@string/prompt_config_target_ab" />
+    			</LinearLayout> 
+    			<LinearLayout
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content"
+    				android:gravity="center" >
+    				<TextView
+    					android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text = "Q  "/>
+    				<Spinner
+    					android:id="@+id/spin_query_q"
+    					android:layout_width="fill_parent"
+    					android:layout_height="wrap_content"
+    					android:entries="@array/spin_config_q"
+    					android:prompt="@string/prompt_config_q" />
+    			</LinearLayout> 
+    			<LinearLayout
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content" 
+    				android:gravity="center">
+    				<TextView
+    					android:layout_width="wrap_content"
+    					android:layout_height="wrap_content"
+    					android:text = "Timeout(S)"/>
+    				<EditText
+    					android:id="@+id/edt_query_timeout"
+    					android:layout_width="fill_parent"
+    					android:layout_height="wrap_content"
+    					android:inputType="number"
+    					/>
+    			</LinearLayout> 
+    		</LinearLayout>
+    	</LinearLayout>
+    	
+    	<LinearLayout
+    	    android:layout_width="290dp"
+    	    android:layout_height="wrap_content"
+    	    android:layout_marginLeft="20px" >
+
+			<TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="Tx Power" />
+
+			<TextView
+			    android:id="@+id/txt_power"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:gravity="right"
+			    android:text="Max" />
+
+		</LinearLayout>
+
+		<SeekBar
+		    android:id="@+id/seek_power"
+		    android:layout_width="282dp"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="20px"
+		    android:layout_marginRight="10px"
+		    android:paddingLeft="20px"
+		    android:paddingRight="10px" />
+		
+		<LinearLayout
+    	    android:layout_width="290dp"
+    	    android:layout_height="wrap_content"
+    	    android:layout_marginLeft="20px" >
+
+			<TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="Tx duty" />
+
+			<TextView
+			    android:id="@+id/txt_duty"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:gravity="right"
+			    android:text="MAX" />
+
+		</LinearLayout>
+
+		<SeekBar
+		    android:id="@+id/seek_duty"
+		    android:layout_width="282dp"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="20px"
+		    android:layout_marginRight="10px"
+		    android:paddingLeft="20px"
+		    android:paddingRight="10px" />
+		
+		<LinearLayout
+    	    android:layout_width="290dp"
+    	    android:layout_height="wrap_content"
+    	    android:layout_marginLeft="10px" >
+
+			<TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="Battery State" />
+
+			<TextView
+			    android:id="@+id/batt_power"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:gravity="right"
+			    android:text="Max" />
+
+		</LinearLayout>
+
+		<ProgressBar 
+		    android:id="@+id/batt_progress"
+		    style="?android:attr/progressBarStyleHorizontal"
+		    android:layout_width="290dp"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="10px"
+		    android:layout_marginRight="10px"
+		    android:paddingLeft="10px"
+		    android:paddingRight="10px"		   
+		    />
+
+		<TextView
+			android:id="@+id/edt_mac"
+			android:layout_width="fill_parent"
+			android:layout_height="30dip" 
+			android:enabled="false"
+			android:layout_marginTop="10dip"
+			android:textColor="#ffffff"
+			android:text="mac1.3.75"/>
+		<TextView
+			android:id="@+id/edt_rfidhost"
+			android:layout_width="fill_parent"
+			android:layout_height="30dip"
+			android:enabled="false" 
+			android:textColor="#ffffff"
+			android:text="rfidhost 1,3,7,1"/>
+    </LinearLayout>
+</FrameLayout>

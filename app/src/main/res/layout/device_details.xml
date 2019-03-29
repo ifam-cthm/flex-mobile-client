@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"      
+    android:id="@+id/scroll"      
+    android:layout_width="fill_parent"      
+    android:layout_height="wrap_content" >        
+    
+    <LinearLayout          
+        android:id="@+id/container"          
+        android:layout_width="fill_parent"          
+        android:layout_height="wrap_content"          
+        android:background="#ff000000"          
+        android:orientation="vertical" > 
+        
+       <LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1">
+			<TextView
+    			android:layout_width="200dip"
+	    		android:layout_height="25dip"
+	    		android:textSize="15dip"
+	    		android:gravity="left"
+	    		android:text="Send Data :"/>		
+		</LinearLayout>
+		
+       <LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1">
+			<EditText
+    			android:id="@+id/edt_send"
+    			android:textSize="16dip"
+    			android:hint="Input the send data..."
+    			android:singleLine="true"
+    			android:layout_width="fill_parent"
+    			android:layout_height="40dip"/>		
+		</LinearLayout>
+		
+        <LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1">
+			<Button android:id="@+id/btn_Send"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:layout_weight="1"
+				android:text="Send Data" />	
+			<Button android:id="@+id/btn_Open"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:layout_weight="1"
+				android:text="Open" />							
+		</LinearLayout> 
+		
+        <LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1">
+		
+            <ScrollView 
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+                	
+				<TextView
+				    android:id="@+id/txt_debug"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:gravity="left"
+				    android:textSize="15dip" />
+				
+			</ScrollView>				
+		</LinearLayout>		
+        
+		    
+    </LinearLayout>    
+    
+</ScrollView>  

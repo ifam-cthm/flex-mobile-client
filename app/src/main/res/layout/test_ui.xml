@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+	
+    	<LinearLayout 
+    			android:layout_width="fill_parent"
+    			android:layout_height="wrap_content"
+    			android:orientation="vertical" 
+    			android:layout_marginLeft ="20px">
+    			<TextView
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content"
+    				android:text="Access Tag ID"
+    				android:textColor = "#ffff00"
+    				android:textSize="20px" />
+    			<LinearLayout 
+    				android:layout_width="fill_parent"
+    				android:layout_height="wrap_content"
+    				android:orientation="horizontal" 
+    				>
+    				
+    				<CheckBox
+    					android:id="@+id/chk_tag"
+    					android:layout_width="60px"
+    					android:layout_height="wrap_content" />
+    				<EditText
+    					android:id="@+id/edt_tag"
+    					android:layout_width="fill_parent"
+    					android:layout_height="wrap_content"/>    					
+    			</LinearLayout>
+    		</LinearLayout>
+</FrameLayout>
