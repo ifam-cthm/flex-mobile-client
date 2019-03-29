@@ -1,4 +1,4 @@
-package com.example.flex.readerhost;
+package com.cthm.flex.readerhost;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

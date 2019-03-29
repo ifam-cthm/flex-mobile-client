@@ -1,4 +1,4 @@
-package com.example.flex.readerhost;
+package com.cthm.flex.readerhost;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.flex.readerhost", appContext.getPackageName());
+        assertEquals("com.cthm.flex.readerhost", appContext.getPackageName());
     }
 }
