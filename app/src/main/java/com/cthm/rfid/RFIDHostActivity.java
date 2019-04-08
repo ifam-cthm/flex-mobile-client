@@ -1,4 +1,4 @@
-package com.dotel.rfid;
+package com.cthm.rfid;
 
 
 /***********************************************************************************
@@ -30,9 +30,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
-import com.dotel.rfid.R900Status;
 
-import android.app.Activity;
+import com.cthm.libr900.BluetoothActivity;
+import com.cthm.libr900.OnBtEventListener;
+import com.cthm.libr900.R900Protocol;
+import com.cthm.libr900.R900RecvPacketParser;
+import com.dotel.rfid.R;
+
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -69,11 +73,6 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ProgressBar;
-
-import com.dotel.libr900.BluetoothActivity;
-import com.dotel.libr900.OnBtEventListener;
-import com.dotel.libr900.R900Protocol;
-import com.dotel.libr900.R900RecvPacketParser;
 
 public class RFIDHostActivity extends BluetoothActivity implements
 		View.OnClickListener, OnBtEventListener,

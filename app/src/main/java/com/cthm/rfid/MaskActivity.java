@@ -1,4 +1,4 @@
-package com.dotel.rfid;
+package com.cthm.rfid;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.dotel.rfid.R;
 
 public class MaskActivity extends Activity implements View.OnClickListener
 {

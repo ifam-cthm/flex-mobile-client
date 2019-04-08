@@ -1,4 +1,4 @@
-package com.dotel.rfid;
+package com.cthm.rfid;
 
 import java.io.File;
 import java.io.FileOutputStream;

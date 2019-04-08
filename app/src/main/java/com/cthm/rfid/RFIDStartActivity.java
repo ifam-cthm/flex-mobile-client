@@ -1,4 +1,4 @@
-package com.dotel.rfid;
+package com.cthm.rfid;
 
 /***********************************************************************************
 * revision history                                                                 *
@@ -6,12 +6,7 @@ package com.dotel.rfid;
 * 2012.12.12	ver 1.0.0  	  eric     1. Generated(First release)                 *                     
 ************************************************************************************/
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Set;
-
-import com.dotel.rfid.R900Status;
+import com.dotel.rfid.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -19,19 +14,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.text.InputFilter;
-import android.text.Spanned;
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 

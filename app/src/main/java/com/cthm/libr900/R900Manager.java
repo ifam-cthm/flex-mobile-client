@@ -1,4 +1,4 @@
-package com.dotel.libr900;
+package com.cthm.libr900;
 
 /***********************************************************************************
 * R900Manager revision history                                                     *

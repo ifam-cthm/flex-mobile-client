@@ -1,4 +1,4 @@
-package com.dotel.rfid;
+package com.cthm.rfid;
 
 
 /***********************************************************************************
@@ -12,14 +12,14 @@ package com.dotel.rfid;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
-import com.dotel.rfid.R900Status;
 
-import android.app.Activity;
+import com.cthm.libr900.OnUsbEventListener;
+import com.cthm.libr900.R900Protocol;
+import com.cthm.libr900.R900RecvPacketParser;
+import com.dotel.rfid.R;
+
 import android.app.AlertDialog;
 import android.app.TabActivity;
-import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -40,7 +40,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -59,10 +58,7 @@ import android.widget.ProgressBar;
 
 //<-- eric 2012.12.7
 // import Usb Interface 
-import com.dotel.libr900.OnUsbEventListener;
-import com.dotel.libr900.R900Protocol;
-import com.dotel.libr900.R900RecvPacketParser;
-import com.dotel.libr900.R900UsbManager;
+import com.cthm.libr900.R900UsbManager;
 //--> eric 2012.12.7
 
 public class RFIDUsbHostActivity extends TabActivity implements
