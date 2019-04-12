@@ -122,12 +122,9 @@ public class BluetoothActivity extends TabActivity
 	}
 
 	@Override
-	public void onDestroy()
-	{
+	public void onDestroy()	{
 		super.onDestroy();	
-			
 		finalize();
-
 	}
 	
 	protected void finalize()

@@ -131,14 +131,22 @@ public class R900Manager
 	public void startDiscovery()
 	{
 		stopDiscovery();
-		Log.e("Teste de Conexão", mBluetoothAdapter.getBondedDevices().toString());
 		mBluetoothAdapter.startDiscovery();
+        Set<BluetoothDevice> pairedDevices = queryPairedDevices();
 
+        if (pairedDevices.size() > 0) {
+            for (BluetoothDevice d: pairedDevices) {
+                String deviceName = d.getName();
+                String macAddress = d.getAddress();
+                Log.i("Teste", "paired device: " + deviceName + " at " + macAddress);
+                // do what you need/want this these list items
+            }
+        }
 	}
 
 	public void stopDiscovery()
 	{
-		if( mBluetoothAdapter != null && mBluetoothAdapter.isDiscovering() )
+		if( mBluetoothAdapter != null && mBluetoothAdapter.isDiscovering())
 			mBluetoothAdapter.cancelDiscovery();
 	}
 

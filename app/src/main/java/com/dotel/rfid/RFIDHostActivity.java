@@ -1,35 +1,11 @@
 package com.dotel.rfid;
 
-
-/***********************************************************************************
-* SDK revision history                                                             *
-*************+*************+********+***********************************************
-* 2011.2.11		ver 1.1.5  	   -       1. Generated(First release)                 *
-//-----------+-------------+--------+-----------------------------------------------
-* 2012.11.23 	ver 1.1.6  	  eric     1. Add check the battery level.			   *
-//-----------+-------------+--------+-----------------------------------------------
-* 2013.4.9      ver 1.1.7     eric     1. Fixed.. check the battery level.         *
-*                                      2. Add Tx duty control function.            * 
-************************************************************************************/
-
-
-
-/***********************************************************************************
-* RFIDHostActivity revision history                                                *
-*************+*************+********+***********************************************
-* 2011.2.11		ver 1.0.0  	   -       1. Generated(First release)                 *
-//-----------+-------------+--------+-----------------------------------------------
-* 2012.11.23 	ver 1.1.0  	  eric     1. Add check the battery level.			   *
-//-----------+-------------+--------+-----------------------------------------------
-* 2013.4.9      ver 1.2.0     eric     1. Fixed.. check the battery level.         *
-*                                      2. Add Tx duty control function.            * 
-************************************************************************************/
-
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.UUID;
+
 import com.dotel.rfid.R900Status;
 
 import android.app.Activity;
@@ -88,7 +64,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	private boolean mAllive;
 	private boolean mForceDisconnect;
 	private BluetoothDevice mConnectedDevice;
-	
+
 	Context context = this;		// eric 2012.11.30
 	
 	//private boolean mOp;		// eric 2012.11.23
@@ -502,117 +478,117 @@ public class RFIDHostActivity extends BluetoothActivity implements
 		initBluetoothDeviceList(R.id.list_btdevice);
 		initTagList(R.id.list_tag);
 
-		mBtnScan = (Button) findViewById(R.id.btn_scan);
+		mBtnScan = findViewById(R.id.btn_scan);
 		mBtnScan.setOnClickListener(this);
 
-		mBtnDisconnect = (Button) findViewById(R.id.btn_disconnect);
+		mBtnDisconnect = findViewById(R.id.btn_disconnect);
 		mBtnDisconnect.setOnClickListener(this);
 		mBtnDisconnect.setEnabled(false);
 
 		// -- Inventory
-		mInventLampOn = (LampView) findViewById(R.id.invent_lamp_on);
-		mInventLampTx = (LampView) findViewById(R.id.invent_lamp_tx);
-		mInventLampRx = (LampView) findViewById(R.id.invent_lamp_rx);
-		mBtnInventory = (Button) findViewById(R.id.btn_inventory);
+		mInventLampOn = findViewById(R.id.invent_lamp_on);
+		mInventLampTx = findViewById(R.id.invent_lamp_tx);
+		mInventLampRx = findViewById(R.id.invent_lamp_rx);
+		mBtnInventory = findViewById(R.id.btn_inventory);
 		mBtnInventory.setOnClickListener(this);
 
-		mTxtTagCount = (TextView) findViewById(R.id.txt_tagcount);
+		mTxtTagCount = findViewById(R.id.txt_tagcount);
 		mTxtTagCount.setOnClickListener(this);
 
 		// -- Access
-		mAccessLampOn = (LampView) findViewById(R.id.access_lamp_on);
-		mAccessLampTx = (LampView) findViewById(R.id.access_lamp_tx);
-		mAccessLampRx = (LampView) findViewById(R.id.access_lamp_rx);
+		mAccessLampOn = findViewById(R.id.access_lamp_on);
+		mAccessLampTx = findViewById(R.id.access_lamp_tx);
+		mAccessLampRx = findViewById(R.id.access_lamp_rx);
 
-		mLampDetectReadWrite = (LampView) findViewById(R.id.detect_lamp_readwrite);
-		mLampDetectLock = (LampView) findViewById(R.id.detect_lamp_lock);
-		mLampDetectKill = (LampView) findViewById(R.id.detect_lamp_kill);
-		mLampStatusReadWrite = (LampView) findViewById(R.id.status_lamp_readwrite);
+		mLampDetectReadWrite = findViewById(R.id.detect_lamp_readwrite);
+		mLampDetectLock = findViewById(R.id.detect_lamp_lock);
+		mLampDetectKill = findViewById(R.id.detect_lamp_kill);
+		mLampStatusReadWrite = findViewById(R.id.status_lamp_readwrite);
 		mLampStatusReadWrite.setOnClickListener(this);
-		mLampStatusLock = (LampView) findViewById(R.id.status_lamp_lock);
+		mLampStatusLock = findViewById(R.id.status_lamp_lock);
 		mLampStatusLock.setOnClickListener(this);
-		mLampStatusKill = (LampView) findViewById(R.id.status_lamp_kill);
+		mLampStatusKill = findViewById(R.id.status_lamp_kill);
 		mLampStatusKill.setOnClickListener(this);
 
-		mLayoutReadWrite = (LinearLayout) findViewById(R.id.layout_read_write);
+		mLayoutReadWrite = findViewById(R.id.layout_read_write);
 		mLayoutReadWrite.setVisibility(View.VISIBLE);
-		mLayoutLock = (LinearLayout) findViewById(R.id.layout_lock);
+		mLayoutLock = findViewById(R.id.layout_lock);
 		mLayoutLock.setVisibility(View.INVISIBLE);
-		mLayoutKill = (LinearLayout) findViewById(R.id.layout_kill);
+		mLayoutKill = findViewById(R.id.layout_kill);
 		mLayoutKill.setVisibility(View.INVISIBLE);
 
-		mBtnAccess = (Button) findViewById(R.id.btn_access);
+		mBtnAccess = findViewById(R.id.btn_access);
 		mBtnAccess.setOnClickListener(this);
-		mEdtPassword = (EditText) findViewById(R.id.edt_password);
+		mEdtPassword = findViewById(R.id.edt_password);
 
-		mRdoRead = (RadioButton) findViewById(R.id.radio_read);
+		mRdoRead = findViewById(R.id.radio_read);
 		mRdoRead.setOnClickListener(this);
 		mRdoRead.setChecked(true);
-		mRdoWrite = (RadioButton) findViewById(R.id.radio_write);
+		mRdoWrite = findViewById(R.id.radio_write);
 		mRdoWrite.setOnClickListener(this);
-		mRdoLock = (RadioButton) findViewById(R.id.radio_lock);
+		mRdoLock = findViewById(R.id.radio_lock);
 		mRdoLock.setOnClickListener(this);
-		mRdoKill = (RadioButton) findViewById(R.id.radio_kill);
+		mRdoKill = findViewById(R.id.radio_kill);
 		mRdoKill.setOnClickListener(this);
 
-		mRdoTag = (RadioButton) findViewById(R.id.radio_tag);
+		mRdoTag = findViewById(R.id.radio_tag);
 		mRdoTag.setChecked(true);
-		mEdtTagId = (EditText) findViewById(R.id.edt_tag);
+		mEdtTagId = findViewById(R.id.edt_tag);
 
 		// ------- Access::read/write
-		mSpinEpc = (Spinner) findViewById(R.id.spin_epc);
+		mSpinEpc = findViewById(R.id.spin_epc);
 		mSpinEpc.setOnItemSelectedListener(this);
-		mEdtTagMemOffset = (EditText) findViewById(R.id.edt_tag_mem_offset);
-		mEdtTagMemWordcount = (EditText) findViewById(R.id.edt_tag_mem_wordcount);
-		mEdtTagMemData = (EditText) findViewById(R.id.edt_tag_mem_data);
+		mEdtTagMemOffset = findViewById(R.id.edt_tag_mem_offset);
+		mEdtTagMemWordcount = findViewById(R.id.edt_tag_mem_wordcount);
+		mEdtTagMemData = findViewById(R.id.edt_tag_mem_data);
 
 		// ------- Access::lock
-		mSpinKillPassword = (Spinner) findViewById(R.id.spin_kill_pwd);
-		mSpinAccessPassword = (Spinner) findViewById(R.id.spin_access_pwd);
-		mSpinUiiMem = (Spinner) findViewById(R.id.spin_uii_mem);
-		mSpinTidMem = (Spinner) findViewById(R.id.spin_tid_mem);
-		mSpinUserMem = (Spinner) findViewById(R.id.spin_user_mem);
-		mLayoutLockPage1 = (LinearLayout) findViewById(R.id.layout_lock_page1);
+		mSpinKillPassword = findViewById(R.id.spin_kill_pwd);
+		mSpinAccessPassword = findViewById(R.id.spin_access_pwd);
+		mSpinUiiMem = findViewById(R.id.spin_uii_mem);
+		mSpinTidMem = findViewById(R.id.spin_tid_mem);
+		mSpinUserMem = findViewById(R.id.spin_user_mem);
+		mLayoutLockPage1 = findViewById(R.id.layout_lock_page1);
 		mLayoutLockPage1.setVisibility(View.VISIBLE);
-		mLayoutLockPage2 = (LinearLayout) findViewById(R.id.layout_lock_page2);
+		mLayoutLockPage2 = findViewById(R.id.layout_lock_page2);
 		mLayoutLockPage2.setVisibility(View.INVISIBLE);
-		mBtnMore = (Button) findViewById(R.id.btn_more);
+		mBtnMore = findViewById(R.id.btn_more);
 		mBtnMore.setVisibility(View.INVISIBLE);
 		mBtnMore.setOnClickListener(this);
 
 		// ------- Access::kill
-		mEdtKillPassword = (EditText) findViewById(R.id.edt_kill_password);
-		mEdtUserPassword = (EditText) findViewById(R.id.edt_user_password);
+		mEdtKillPassword = findViewById(R.id.edt_kill_password);
+		mEdtUserPassword = findViewById(R.id.edt_user_password);
 
-		mBtnMask = (Button) findViewById(R.id.btn_mask);
+		mBtnMask = findViewById(R.id.btn_mask);
 		mBtnMask.setOnClickListener(this);
 
 		// -- Config
-		mChkAutoLink = (CheckBox) findViewById(R.id.chk_auto_link);
-		mChkDetectSound = (CheckBox) findViewById(R.id.chk_detect_sound);
-		mChkSkipSame = (CheckBox) findViewById(R.id.chk_skip_same);
-		mChkSingleTag = (CheckBox) findViewById(R.id.chk_single_tag);
+		mChkAutoLink = findViewById(R.id.chk_auto_link);
+		mChkDetectSound = findViewById(R.id.chk_detect_sound);
+		mChkSkipSame = findViewById(R.id.chk_skip_same);
+		mChkSingleTag = findViewById(R.id.chk_single_tag);
 		mChkSingleTag.setOnClickListener(this);
-		mChkContinuous = (CheckBox) findViewById(R.id.chk_continuous);
+		mChkContinuous = findViewById(R.id.chk_continuous);
 
-		mSpinQuerySession = (Spinner) findViewById(R.id.spin_query_session);
-		mSpinTargetAB = (Spinner) findViewById(R.id.spin_target_ab);
-		mSpinQueryQ = (Spinner) findViewById(R.id.spin_query_q);
-		mEdtTimeout = (EditText) findViewById(R.id.edt_query_timeout);
-		mTxtPower = (TextView) findViewById(R.id.txt_power);
-		mSeekPower = (SeekBar) findViewById(R.id.seek_power);
+		mSpinQuerySession = findViewById(R.id.spin_query_session);
+		mSpinTargetAB = findViewById(R.id.spin_target_ab);
+		mSpinQueryQ = findViewById(R.id.spin_query_q);
+		mEdtTimeout = findViewById(R.id.edt_query_timeout);
+		mTxtPower = findViewById(R.id.txt_power);
+		mSeekPower = findViewById(R.id.seek_power);
 		mSeekPower.setMax(9);
 		mSeekPower.setOnSeekBarChangeListener(this);
 		
 		/* Add Tx Duty UI control */
-		mTxtDuty = (TextView) findViewById(R.id.txt_duty);
-		mSeekDuty = (SeekBar) findViewById(R.id.seek_duty);
+		mTxtDuty = findViewById(R.id.txt_duty);
+		mSeekDuty = findViewById(R.id.seek_duty);
 		mSeekDuty.setMax(4);
 		mSeekDuty.setOnSeekBarChangeListener(this);
 		
 		/* Add Batter Gauge Monitor*/
-		mBattPower = (TextView) findViewById(R.id.batt_power);	// eric 2012.11.23
-		mProgress = (ProgressBar) findViewById(R.id.batt_progress);	// eric 2012.11.23
+		mBattPower = findViewById(R.id.batt_power);	// eric 2012.11.23
+		mProgress = findViewById(R.id.batt_progress);	// eric 2012.11.23
 		mProgress.setMax(100);	// eric 2012.11.23
 		mProgress.setProgress(0);	// eric 2012.11.23
 		
@@ -759,7 +735,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 
 	protected boolean initBluetoothDeviceList( int id )
 	{
-		mListDevice = (ListView) findViewById(id);
+		mListDevice = findViewById(id);
 		if( mListDevice != null )
 		{
 			mArrBtDevice = new ArrayList<HashMap<String, String>>();
@@ -775,7 +751,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 
 	protected boolean initTagList( int id )
 	{
-		mListTag = (ListView) findViewById(id);
+		mListTag = findViewById(id);
 		if( mListTag != null )
 		{
 			mArrTag = new ArrayList<HashMap<String, String>>();
@@ -957,8 +933,8 @@ public class RFIDHostActivity extends BluetoothActivity implements
 													int whichButton )
 											{
 												setupOperationParameter();
-												Button v = (Button) findViewById(R.id.btn_inventory);
-												( (Button) v ).setText("STOP");
+												Button v = findViewById(R.id.btn_inventory);
+												v.setText("STOP");
 												sendCmdInventory();
 												//mOp = true;	// eric 2012.11.23
 												//R900Status.setOperationMode(1);	// eric 2012.11.29
@@ -976,8 +952,8 @@ public class RFIDHostActivity extends BluetoothActivity implements
 												MaskActivity.clearSelectMask();
 
 												setupOperationParameter();
-												Button v = (Button) findViewById(R.id.btn_inventory);
-												( (Button) v ).setText("STOP");
+												Button v = findViewById(R.id.btn_inventory);
+												v.setText("STOP");
 												sendCmdInventory(); 
 												//mOp = true;	// eric 2012.11.23
 												//R900Status.setOperationMode(1);	// eric 2012.11.29
@@ -1084,7 +1060,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 			case R.id.status_lamp_lock:
 			case R.id.status_lamp_kill:
 			{
-				final LampView LAMP = (LampView) findViewById(v.getId());
+				final LampView LAMP = findViewById(v.getId());
 
 				if( LAMP.getLamp() == LampView.LAMP_RED
 						&& mStrAccessErrMsg != null )
@@ -1439,36 +1415,31 @@ public class RFIDHostActivity extends BluetoothActivity implements
 		if( index > 2 )
 			lockPattern.lockPerma = true;
 		lockPattern.enableKillPwd = index != 0;
-		lockPattern.indexKillPwd = ( ( index == 1 ) ? false
-				: ( ( index == 2 ) ? true : false ) );
+		lockPattern.indexKillPwd = ((index != 1) && (index == 2));
 
 		index = mSpinAccessPassword.getSelectedItemPosition();
 		if( index > 2 )
 			lockPattern.lockPerma = true;
 		lockPattern.enableAcsPwd = index != 0;
-		lockPattern.indexAcsPwd = ( ( index == 1 ) ? false
-				: ( ( index == 2 ) ? true : false ) );
+		lockPattern.indexAcsPwd = ((index != 1) && (index == 2));
 
 		index = mSpinUiiMem.getSelectedItemPosition();
 		if( index > 2 )
 			lockPattern.lockPerma = true;
 		lockPattern.enableUii = index != 0;
-		lockPattern.indexUii = ( ( index == 1 ) ? false
-				: ( ( index == 2 ) ? true : false ) );
+		lockPattern.indexUii = ((index != 1) && (index == 2));
 
 		index = mSpinTidMem.getSelectedItemPosition();
 		if( index > 2 )
 			lockPattern.lockPerma = true;
 		lockPattern.enableTid = index != 0;
-		lockPattern.indexTid = ( ( index == 1 ) ? false
-				: ( ( index == 2 ) ? true : false ) );
+		lockPattern.indexTid = ((index != 1) && (index == 2));
 
 		index = mSpinUserMem.getSelectedItemPosition();
 		if( index > 2 )
 			lockPattern.lockPerma = true;
 		lockPattern.enableUser = index != 0;
-		lockPattern.indexUser = ( ( index == 1 ) ? false
-				: ( ( index == 2 ) ? true : false ) );
+		lockPattern.indexUser = ((index != 1) && (index == 2));
 
 		return lockPattern;
 	}
@@ -1526,9 +1497,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	private boolean CheckAuthority()
 	{
 		final String strAuth = mEdtUserPassword.getText().toString();
-		if( strAuth != null && strAuth.equalsIgnoreCase("tagkiller") )
-			return true;
-		return false;
+		return strAuth != null && strAuth.equalsIgnoreCase("tagkiller");
 	}
 
 	public String getPassword()
@@ -1631,19 +1600,26 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	{
 		Log.e("Teste de Conexão", "finalizada a busca");
 		mBtnScan.setEnabled(true);
+
 		if( mArrBtDevice.size() == 0 )
 		{
+			Set<BluetoothDevice> mPairedDevices = mR900Manager.queryPairedDevices();
 			HashMap<String, String> item = new HashMap<String, String>();
-			item.put("name", "Not Found");
-			item.put("summary", "");
-			item.put("address", "");
-			item.put("status", "");
+			for (BluetoothDevice device : mPairedDevices){
+				if(device.getName().equals("HQ_UHF_READER")){
+					item.put("name", device.getName());
+					item.put("address", device.getAddress());
+				}
+			}
 			mArrBtDevice.add(item);
+			//item.put("name", "Not Found");
+			//item.put("summary", "");
+			//item.put("address", "");
+			//item.put("status", "");
+
 			mAdapterDevice.notifyDataSetChanged();
 		}
-		
-		mBtnDisconnect.setEnabled( mConnected );
-			
+		//mBtnDisconnect.setEnabled( mConnected );
 	}
 
 	private void setEnabledLinkCtrl( boolean bEnable )
@@ -1941,7 +1917,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 			if((CMD.indexOf("ok,") != -1) && (!mBattflag))
 			{
 				final int idxComma = CMD.indexOf(",");
-				final String mStrBattLevel = CMD.substring(idxComma + 1, CMD.length());
+				final String mStrBattLevel = CMD.substring(idxComma + 1);
 								
 				/*
 				Log.i(TAG, "12312931298389128398129389128391289381298392183918293");
@@ -2139,8 +2115,8 @@ public class RFIDHostActivity extends BluetoothActivity implements
 				final int errTagPrefix = strTagId.indexOf("err_tag=");
 				if( errTagPrefix == 0 )
 				{
-					final String strTagError = strTagId.substring(errTagPrefix,
-							strTagId.length());
+					final String strTagError = strTagId.substring(errTagPrefix
+					);
 					mStrAccessErrMsg = getTagErrorMsg(strTagError);
 				}
 				else
@@ -2149,7 +2125,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 					if( errOpPrefix == 0 )
 					{
 						final String strOpError = strTagId.substring(
-								errOpPrefix, strTagId.length());
+								errOpPrefix);
 						mStrAccessErrMsg = "Operation Error : " + strOpError;
 					}
 					else
@@ -2210,8 +2186,8 @@ public class RFIDHostActivity extends BluetoothActivity implements
 				final int errTagPrefix = strTagId.indexOf("err_tag=");
 				if( errTagPrefix == 0 )
 				{
-					final String strTagError = strTagId.substring(errTagPrefix,
-							strTagId.length());
+					final String strTagError = strTagId.substring(errTagPrefix
+					);
 					mStrAccessErrMsg = getTagErrorMsg(strTagError);
 				}
 				else
@@ -2220,7 +2196,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 					if( errOpPrefix == 0 )
 					{
 						final String strOpError = strTagId.substring(
-								errOpPrefix, strTagId.length());
+								errOpPrefix);
 						mStrAccessErrMsg = "Operation Error : " + strOpError;
 					}
 					else
@@ -2283,8 +2259,8 @@ public class RFIDHostActivity extends BluetoothActivity implements
 				final int errTagPrefix = strTagId.indexOf("err_tag=");
 				if( errTagPrefix == 0 )
 				{
-					final String strTagError = strTagId.substring(8,
-							strTagId.length());
+					final String strTagError = strTagId.substring(8
+					);
 					mStrAccessErrMsg = getTagErrorMsg(strTagError);
 				}
 				else
@@ -2292,8 +2268,8 @@ public class RFIDHostActivity extends BluetoothActivity implements
 					final int errOpPrefix = strTagId.indexOf("err_op=");
 					if( errOpPrefix == 0 )
 					{
-						final String strOpError = strTagId.substring(7,
-								strTagId.length());
+						final String strOpError = strTagId.substring(7
+						);
 						mStrAccessErrMsg = "Operation Error : " + strOpError;
 					}
 					else
@@ -2339,8 +2315,8 @@ public class RFIDHostActivity extends BluetoothActivity implements
 			final int errTagPrefix = strTagId.indexOf("err_tag=");
 			if( errTagPrefix == 0 )
 			{
-				final String strTagError = strTagId.substring(8,
-						strTagId.length());
+				final String strTagError = strTagId.substring(8
+				);
 				mStrAccessErrMsg = getTagErrorMsg(strTagError);
 				bStatusOk = false;
 			}
@@ -2349,8 +2325,8 @@ public class RFIDHostActivity extends BluetoothActivity implements
 				final int errOpPrefix = strTagId.indexOf("err_op=");
 				if( errOpPrefix == 0 )
 				{
-					final String strOpError = strTagId.substring(7,
-							strTagId.length());
+					final String strOpError = strTagId.substring(7
+					);
 					mStrAccessErrMsg = "Operation Error : " + strOpError;
 					bStatusOk = false;
 				}
