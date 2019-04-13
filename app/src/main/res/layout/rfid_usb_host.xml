@@ -78,17 +78,17 @@
     			<LinearLayout
     				android:layout_width="fill_parent"
     				android:layout_height="wrap_content">
-	    			<com.dotel.rfid.LampView
+	    			<com.cthm.rfid.LampView
 	    				android:id="@+id/invent_lamp_on"
 	    				android:gravity="center"
 	    				android:layout_width="25dip"
 	    				android:layout_height="25dip"/>
-	    			<com.dotel.rfid.LampView
+	    			<com.cthm.rfid.LampView
 	    				android:id="@+id/invent_lamp_tx"
 	    				android:gravity="center"
 	    				android:layout_width="25dip"
 	    				android:layout_height="25dip"/>
-	    			<com.dotel.rfid.LampView
+	    			<com.cthm.rfid.LampView
 	    				android:id="@+id/invent_lamp_rx"
 	    				android:gravity="center"
 	    				android:layout_width="25dip"
@@ -156,17 +156,17 @@
     			<LinearLayout
     				android:layout_width="fill_parent"
     				android:layout_height="wrap_content">
-	    			<com.dotel.rfid.LampView
+	    			<com.cthm.rfid.LampView
 	    				android:id="@+id/access_lamp_on"
 	    				android:gravity="center"
 	    				android:layout_width="25dip"
 	    				android:layout_height="25dip"/>
-	    			<com.dotel.rfid.LampView
+	    			<com.cthm.rfid.LampView
 	    				android:id="@+id/access_lamp_tx"
 	    				android:gravity="center"
 	    				android:layout_width="25dip"
 	    				android:layout_height="25dip"/>
-	    			<com.dotel.rfid.LampView
+	    			<com.cthm.rfid.LampView
 	    				android:id="@+id/access_lamp_rx"
 	    				android:gravity="center"
 	    				android:layout_width="25dip"
@@ -289,7 +289,7 @@
    					android:layout_weight="1"
    					android:orientation="horizontal"
    					android:gravity="left" >
-   					<com.dotel.rfid.LampView
+   					<com.cthm.rfid.LampView
 	    				android:id="@+id/detect_lamp_readwrite"
 	    				android:layout_marginTop="12dip"
 	    				android:gravity="center"
@@ -323,7 +323,7 @@
    					android:layout_weight="1"
    					android:orientation="horizontal" 
    					android:gravity="left">
-   					<com.dotel.rfid.LampView
+   					<com.cthm.rfid.LampView
 	    				android:id="@+id/status_lamp_readwrite"
 	    				android:layout_marginTop="12dip"
 	    				android:gravity="center"
@@ -369,7 +369,7 @@
 		   					android:layout_height="wrap_content"
 		   					android:layout_weight="1"
 		   					android:orientation="horizontal" >
-		   					<com.dotel.rfid.LampView
+		   					<com.cthm.rfid.LampView
 			    				android:id="@+id/detect_lamp_lock"
 			    				android:layout_marginTop="12dip"
 			    				android:gravity="center"
@@ -392,7 +392,7 @@
 		   					android:layout_height="wrap_content"
 		   					android:layout_weight="1"
 		   					android:orientation="horizontal" >
-		   					<com.dotel.rfid.LampView
+		   					<com.cthm.rfid.LampView
 			    				android:id="@+id/status_lamp_lock"
 			    				android:layout_marginTop="12dip"
 			    				android:gravity="center"
@@ -464,7 +464,7 @@
    					android:layout_height="30dip"
    					android:layout_weight="1"
    					android:orientation="horizontal" >
-   					<com.dotel.rfid.LampView
+   					<com.cthm.rfid.LampView
 	    				android:id="@+id/detect_lamp_kill"
 	    				android:layout_marginTop="3dip"
 	    				android:gravity="center"
@@ -489,7 +489,7 @@
    					android:layout_height="wrap_content"
    					android:layout_weight="1"
    					android:orientation="horizontal" >
-   					<com.dotel.rfid.LampView
+   					<com.cthm.rfid.LampView
 	    				android:id="@+id/status_lamp_kill"
 	    				android:layout_marginTop="12dip"
 	    				android:gravity="center"
