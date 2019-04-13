@@ -1,4 +1,4 @@
-package com.dotel.libr900;
+package com.cthm.libr900;
 
 /***********************************************************************************
 * BluetoothActivity revision history                                               *
@@ -21,8 +21,8 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 
-import com.dotel.rfid.R900Status;
-import com.dotel.rfid.RFIDHostActivity.LockPattern;
+import com.cthm.rfid.R900Status;
+import com.cthm.rfid.RFIDHostActivity.LockPattern;
 
 public class BluetoothActivity extends TabActivity 
 {

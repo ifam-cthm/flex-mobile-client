@@ -1,4 +1,4 @@
-package com.dotel.rfid;
+package com.cthm.rfid;
 
 import android.content.Context;
 import android.os.Handler;
@@ -6,6 +6,8 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+
+import com.dotel.rfid.R;
 
 public class LampView extends View
 {

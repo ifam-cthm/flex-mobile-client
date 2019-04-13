@@ -1,4 +1,4 @@
-package com.dotel.libr900;
+package com.cthm.libr900;
 
 import android.util.Log;
 

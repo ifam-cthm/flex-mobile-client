@@ -1,5 +1,5 @@
 
-package com.dotel.libr900;
+package com.cthm.libr900;
 
 /***********************************************************************************
 * R900UsbManager revision history                                                  *
@@ -8,11 +8,10 @@ package com.dotel.libr900;
 ************************************************************************************/
 
 import java.nio.ByteBuffer;
-import java.util.EventListener;
 import java.util.HashMap;
 
-import com.dotel.rfid.R900Status;
-import com.dotel.rfid.RFIDUsbHostActivity.LockPattern;
+import com.cthm.rfid.R900Status;
+import com.cthm.rfid.RFIDUsbHostActivity;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -517,7 +516,7 @@ public class R900UsbManager implements Runnable {
 	 * @param lockPattern : lock pattern 
 	 * @param ACS_PWD : access password
 	 */
-	public void sendLockTag( LockPattern lockPattern, String ACS_PWD )
+	public void sendLockTag(RFIDUsbHostActivity.LockPattern lockPattern, String ACS_PWD )
 	{
 		if(mConnection != null && mEndpointOut != null)
 		{
