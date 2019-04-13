@@ -1596,6 +1596,9 @@ public class RFIDHostActivity extends BluetoothActivity implements
 		mAdapterDevice.notifyDataSetChanged();
 	}
 
+	/**
+	 * Esta função foi alterada para realizar uma conexão forçada com o Leitor DOTR-9000. Aprimorar em uma próxima release
+	 */
 	public void onBtScanCompleted()
 	{
 		Log.e("Teste de Conexão", "finalizada a busca");
@@ -1612,11 +1615,6 @@ public class RFIDHostActivity extends BluetoothActivity implements
 				}
 			}
 			mArrBtDevice.add(item);
-			//item.put("name", "Not Found");
-			//item.put("summary", "");
-			//item.put("address", "");
-			//item.put("status", "");
-
 			mAdapterDevice.notifyDataSetChanged();
 		}
 		//mBtnDisconnect.setEnabled( mConnected );
