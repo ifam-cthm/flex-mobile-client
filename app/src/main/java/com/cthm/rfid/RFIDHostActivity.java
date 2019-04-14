@@ -4,13 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
-<<<<<<< HEAD:app/src/main/java/com/dotel/rfid/RFIDHostActivity.java
-import java.util.UUID;
-
-import com.dotel.rfid.R900Status;
-=======
->>>>>>> e8b8c87b914a93083cf03a853d918adac0742179:app/src/main/java/com/cthm/rfid/RFIDHostActivity.java
-
 import com.cthm.libr900.BluetoothActivity;
 import com.cthm.libr900.OnBtEventListener;
 import com.cthm.libr900.R900Protocol;
@@ -59,9 +52,8 @@ public class RFIDHostActivity extends BluetoothActivity implements
 		AdapterView.OnItemSelectedListener, TabHost.OnTabChangeListener,
 		SeekBar.OnSeekBarChangeListener
 {
-	
+
 	private TabHost mTab;
-	// private R900RecvPacketParser mPacketParser = new R900RecvPacketParser();
 	public static SoundManager mSoundManager = new SoundManager();
 	private String mStrAccessErrMsg;
 	private boolean mAllive;
@@ -69,12 +61,12 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	private BluetoothDevice mConnectedDevice;
 
 	Context context = this;		// eric 2012.11.30
-	
+
 	//private boolean mOp;		// eric 2012.11.23
 	private boolean mBattflag;	// eric 2012.11.23
 	private boolean mBattRun;	// eric 2013.4.9
 	//private int mBattLevel;	// eric 2012.11.23
-	
+
 	// --- Link
 	private Button mBtnScan;
 	private Button mBtnDisconnect;
@@ -120,13 +112,12 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	private LinearLayout mLayoutLock;
 	private LinearLayout mLayoutKill;
 
-	// ------- Access::read/write
+
 	private Spinner mSpinEpc;
 	private EditText mEdtTagMemOffset;
 	private EditText mEdtTagMemWordcount;
 	private EditText mEdtTagMemData;
 
-	// ------- Access::lock
 	private Spinner mSpinKillPassword;
 	private Spinner mSpinAccessPassword;
 	private Spinner mSpinUiiMem;
@@ -136,7 +127,6 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	private LinearLayout mLayoutLockPage2;
 	private Button mBtnMore;
 
-	// ------- Access::kill
 	private EditText mEdtKillPassword;
 	private EditText mEdtUserPassword;
 
@@ -159,20 +149,20 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	private SeekBar mSeekDuty;	// eric 2013.4.9
 	private ProgressBar mProgress;	// eric 2012.11.23
 	private TextView mBattPower;	// eric 2012.11.23
-	
+
 	private static final String[] TXT_POWER =
 	{ "Max", "-1dB", "-2dB", "-3dB", "-4dB", "-5dB", "-6dB", "-7dB", "-8dB",
 			"-9dB" };
 	private static final int[] TX_POWER =
 	{ 0, -1, -2, -3, -4, -5, -6, -7, -8, -9 };
-	
+
 	//<-- eric 2013.4.9
-	private static final String[] TXT_DUTY = 
+	private static final String[] TXT_DUTY =
 	{ "90%", "80%", "60%", "41%", "20%" };
-	
+
 	private static final int[] TX_DUTY_OFF =
 	{ 10, 40, 80, 100, 160, 180 };
-	
+
 	private static final int[] TX_DUTY_ON =
 	{ 190, 160, 70, 40, 20 };
 	//--> eric 2013.4.9
@@ -197,14 +187,14 @@ public class RFIDHostActivity extends BluetoothActivity implements
 			return null;
 		}
 	};
-	
+
 	private BroadcastReceiver mPowerOffReceiver = new BroadcastReceiver()
 	{
 		public void onReceive( Context context, Intent intent )
 		{
 			if( mConnected )
 			{
-				sendCmdStop();				 
+				sendCmdStop();
 				byeBluetoothDevice();
 			}
 		}
@@ -229,7 +219,6 @@ public class RFIDHostActivity extends BluetoothActivity implements
 
 	public static final int MSG_AUTO_LINK = 100;
 
-	// ---
 	private int mTabMode = TAB_LINK;
 	public static final int TAB_LINK = 0;
 	public static final int TAB_INVENTORY = 1;
@@ -241,7 +230,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	public static final int ACC_TYPE_WRITE = 1;
 	public static final int ACC_TYPE_LOCK = 2;
 	public static final int ACC_TYPE_KILL = 3;
-	
+
 	// --- Battery Message
 	public static final int MSG_BATTERY_CTRL = 50;
 
@@ -249,7 +238,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	public static boolean mExit = false;
 
 	public static final int INTENT_MASK = 1;
-	
+
 	// --- Interface Mode
 	public static final int MODE_NOT_DETECTED = 0;
 	public static final int MODE_BT_INTERFACE = 1;
@@ -293,7 +282,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 			}
 		}
 	};
-	
+
 	//<-- eric 2012.11.23
 	private Handler mBattHandler = new Handler()
 	{
@@ -307,14 +296,14 @@ public class RFIDHostActivity extends BluetoothActivity implements
 					// Set the text(power level)
 					final String str = Integer.toString(R900Status.getBatteryLevel()) + "%";
 					mBattPower.setText(str);
-					
+
 					// Set the progress bar(power level)
 					//mProgress.setProgress(mBattLevel);
 					mProgress.setProgress(R900Status.getBatteryLevel());
 					break;
 				}
-			}	
-		}			
+			}
+		}
 	};
 	//--> eric 2012.11.23
 
@@ -400,7 +389,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 		super.onDestroy();
 	}
 
-	@Override 
+	@Override
 	public void onStart()
 	{
 		super.onStart();
@@ -436,16 +425,14 @@ public class RFIDHostActivity extends BluetoothActivity implements
 		super.onStop();
 		mAllive = false;
 		mHandlerAutoLink.removeMessages(MSG_AUTO_LINK);
-		
-		//<-- eric 2012.11.29
+
 		int mode = R900Status.getInterfaceMode();
 		if(mode == 1)
 		{
 			if( mConnected )
 				sendCmdStop();
 		}
-		//--> eric 2012.11.29		
-		
+
 	}
 
 	@Override
@@ -458,7 +445,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	public void onCreate( Bundle savedInstanceState )
 	{
 		super.onCreate(savedInstanceState);
-		
+
 		Log.i(TAG, "RFIDHostActivity.java......onCreate()~!~!~!~!~!~!~!~!~!");
 
 		// -- ui
@@ -476,7 +463,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 		mTab.setOnTabChangedListener(this);
 
 		// -- event
-					
+
 		// -- Link
 		initBluetoothDeviceList(R.id.list_btdevice);
 		initTagList(R.id.list_tag);
@@ -582,19 +569,19 @@ public class RFIDHostActivity extends BluetoothActivity implements
 		mSeekPower = findViewById(R.id.seek_power);
 		mSeekPower.setMax(9);
 		mSeekPower.setOnSeekBarChangeListener(this);
-		
+
 		/* Add Tx Duty UI control */
 		mTxtDuty = findViewById(R.id.txt_duty);
 		mSeekDuty = findViewById(R.id.seek_duty);
 		mSeekDuty.setMax(4);
 		mSeekDuty.setOnSeekBarChangeListener(this);
-		
+
 		/* Add Batter Gauge Monitor*/
 		mBattPower = findViewById(R.id.batt_power);	// eric 2012.11.23
 		mProgress = findViewById(R.id.batt_progress);	// eric 2012.11.23
 		mProgress.setMax(100);	// eric 2012.11.23
 		mProgress.setProgress(0);	// eric 2012.11.23
-		
+
 		// --
 		setOnBtEventListener(this);
 
@@ -736,8 +723,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 
-	protected boolean initBluetoothDeviceList( int id )
-	{
+	protected boolean initBluetoothDeviceList(int id) {
 		mListDevice = findViewById(id);
 		if( mListDevice != null )
 		{
@@ -957,7 +943,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 												setupOperationParameter();
 												Button v = findViewById(R.id.btn_inventory);
 												v.setText("STOP");
-												sendCmdInventory(); 
+												sendCmdInventory();
 												//mOp = true;	// eric 2012.11.23
 												//R900Status.setOperationMode(1);	// eric 2012.11.29
 												mInventLampTx
@@ -1113,7 +1099,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 			mTxtPower.setText(TXT_POWER[ progress ]);
 			sendSettingTxPower(TX_POWER[ progress ]);
 		}
-		
+
 		if( seekBar == mSeekDuty )
 		{
 			mTxtDuty.setText(TXT_DUTY[ progress ]);
@@ -1384,28 +1370,28 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	{
 		/*
 		 * int mark; short lock_mask = 0; short lock_enable = 0;
-		 * 
+		 *
 		 * //--- mark = mSpinKillPassword.getSelectedItemPosition(); lock_enable
 		 * |= SWAPLSB2( mark != 0 ? mark - 1 : 0 ); lock_mask |= ( mark == 0 ? 0
 		 * : 3 );
-		 * 
+		 *
 		 * //--- lock_enable <<= 2; lock_mask <<= 2; mark =
 		 * mSpinAccessPassword.getSelectedItemPosition(); lock_enable |=
 		 * SWAPLSB2( mark != 0 ? mark - 1 : 0 ); lock_mask |= (mark == 0 ? 0 :
 		 * 3);
-		 * 
+		 *
 		 * //--- lock_enable <<= 2; lock_mask <<= 2; mark =
 		 * mSpinUiiMem.getSelectedItemPosition(); lock_enable |= SWAPLSB2( mark
 		 * != 0 ? mark - 1 : 0 ); lock_mask |= (mark == 0 ? 0 : 3);
-		 * 
+		 *
 		 * //--- lock_enable <<= 2; lock_mask <<= 2; mark =
 		 * mSpinTidMem.getSelectedItemPosition(); lock_enable |= SWAPLSB2( mark
 		 * != 0 ? mark - 1 : 0 ); lock_mask |= (mark == 0 ? 0 : 3);
-		 * 
+		 *
 		 * //--- lock_enable <<= 2; lock_mask <<= 2; mark =
 		 * mSpinUserMem.getSelectedItemPosition(); lock_enable |= SWAPLSB2( mark
 		 * != 0 ? mark - 1 : 0 ); lock_mask |= (mark == 0 ? 0 : 3);
-		 * 
+		 *
 		 * //--- LockPattern lockPattern = new LockPattern();
 		 * lockPattern.lockMask = lock_mask; lockPattern.lockEnable =
 		 * lock_enable; return lockPattern;
@@ -1586,8 +1572,8 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	{
 		HashMap<String, String> item = new HashMap<String, String>();
 		item.put("name", device.getName());
-		if( mConnected == true && 
-			mConnectedDevice != null && 
+		if( mConnected == true &&
+			mConnectedDevice != null &&
 			mConnectedDevice.getAddress().equals( device.getAddress() ) )
 			item.put("summary", device.getAddress() + " - Connected" );
 		else
@@ -1671,7 +1657,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	{
 		if( mExit == true )
 			return;
-		
+
 		if( bConnected == false )
 		{
 			mInventLampOn.startBlink(LampView.LAMP_GRAY, LampView.LAMP_GREEN,
@@ -1697,7 +1683,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	{
 		if( mExit == true )
 			return;
-		
+
 		mConnected = bConnected;
 		setEnabledBtnDisconnect(bConnected);
 		setLinkStatus(bConnected);
@@ -1712,7 +1698,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	public void onBtConnected( BluetoothDevice device )
 	{
 		Log.d(TAG, "onBtConnected");
-		
+
 		setEnabledLinkCtrl(true);
 		// setEnabledBtnDisconnect(true);
 		// Toast.makeText( this, "Connect OK", Toast.LENGTH_SHORT );
@@ -1725,19 +1711,19 @@ public class RFIDHostActivity extends BluetoothActivity implements
 
 		setConnectionStatus(true);
 		mForceDisconnect = false;
-		
+
 		// set the tx duty
 		sendSettingTxCycle(TX_DUTY_ON[0], TX_DUTY_OFF[0]);
-		mTxtDuty.setText(TXT_DUTY[0]);		
+		mTxtDuty.setText(TXT_DUTY[0]);
 	}
-	
+
 	//<-- eric 2012.11.23
 	// Battery Level Monitoring routine
 	public void onBattGaugingStart()
 	{
 		mBattflag = true;
 		Log.d(TAG, "******* Race Start~!! onBattGaugingStart");
-		
+
 		new Thread()
 		{
 			public void run()
@@ -1751,7 +1737,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 					//if(!mOp)
 					// 1. get current battery level
 					sendGettingBatteryLevel(0);
-						
+
 					// 2. check battery flag...
 					if(mBattflag == true)
 					{
@@ -1759,17 +1745,17 @@ public class RFIDHostActivity extends BluetoothActivity implements
 						Message msg = mBattHandler.obtainMessage();
 						mBattHandler.removeMessages(MSG_BATTERY_CTRL);
 						mBattHandler.sendEmptyMessage(MSG_BATTERY_CTRL);
-							
-						mBattflag = false;							
-					}			
+
+						mBattflag = false;
+					}
 				}
 				*/
 				//--> eric 2013.4.9
 				try{
-					
+
 					// 1. get current battery level
 					sendGettingBatteryLevel(0);
-					
+
 					// 2. Check battery flag...
 					if(mBattflag == true)
 					{
@@ -1777,12 +1763,12 @@ public class RFIDHostActivity extends BluetoothActivity implements
 						Message msg = mBattHandler.obtainMessage();
 						mBattHandler.removeMessages(MSG_BATTERY_CTRL);
 						mBattHandler.sendEmptyMessage(MSG_BATTERY_CTRL);
-							
-						mBattflag = false;	
+
+						mBattflag = false;
 					}
-					
+
 					// as if 1sec, check the battery level..
-					Thread.sleep(2000);						
+					Thread.sleep(2000);
 				}
 				catch (InterruptedException e){
 					// exeption debugging routine
@@ -1825,10 +1811,10 @@ public class RFIDHostActivity extends BluetoothActivity implements
 		while( true )
 		{
 			final String parameter = packetParser.popPacket();
-			
+
 			if( mConnected == false )
 				break;
-			
+
 			if( parameter != null )
 			{
 				Log.d(TAG, "onBtDataRecv : [parameter = " + parameter + "]");
@@ -1876,10 +1862,10 @@ public class RFIDHostActivity extends BluetoothActivity implements
 		/*
 		 * char charBuff[] = new char[ data.length ]; for( int i = 0; i <
 		 * data.length; ++i ) charBuff[ i ] = (char)( data[ i ] & 0xff );
-		 * 
+		 *
 		 * StringBuilder strBuilder = new StringBuilder(); strBuilder.append(
 		 * charBuff );
-		 * 
+		 *
 		 * //------------- Message msg = new Message(); Bundle bundle = new
 		 * Bundle(); bundle.putString( "msg", strBuilder.toString() ); msg.what
 		 * = MSG_TOAST; msg.setData( bundle ); mHandlerToast.sendMessage(msg);
@@ -1912,33 +1898,33 @@ public class RFIDHostActivity extends BluetoothActivity implements
 					setConnectionStatus(true);
 			}
 			*/
-			
+
 			//<-- eric 2012.11.23
 			// get current battery level
 			if((CMD.indexOf("ok,") != -1) && (!mBattflag))
 			{
 				final int idxComma = CMD.indexOf(",");
 				final String mStrBattLevel = CMD.substring(idxComma + 1);
-								
+
 				/*
 				Log.i(TAG, "12312931298389128398129389128391289381298392183918293");
 				Log.i(TAG, "[[[[[[[[ RECV Monitor ]]]]]]]] idxComma : " + idxComma);
 				Log.i(TAG, "[[[[[[[[ RECV Monitor ]]]]]]]] mStrBattLevel : " + mStrBattLevel);
 				Log.i(TAG, "12312931298389128398129389128391289381298392183918293");
 				*/
-				
+
 				// type(string to int)
 				//mBattLevel = Integer.parseInt(mStrBattLevel);
 				R900Status.setBatteryLevel(Integer.parseInt(mStrBattLevel));
-								
+
 				// set flag...
-				mBattflag = true;													
+				mBattflag = true;
 			}
-			//--> eric 2012.11.23			
-			
+			//--> eric 2012.11.23
+
 			if( mConnected == false )
 				return;
-			
+
 			if( CMD.indexOf("$trigger=1") == 0 )
 			{
 				if( mTabMode == TAB_INVENTORY )
@@ -1990,7 +1976,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 						final String strNum = CMD.substring(4, idxComma);
 						final String strErr = getEndMsg(strNum);
 						if( strErr != null )
-							mStrAccessErrMsg = strErr; 
+							mStrAccessErrMsg = strErr;
 					}
 				}
 				else if( mTabMode == TAB_ACCESS )
@@ -2450,11 +2436,11 @@ public class RFIDHostActivity extends BluetoothActivity implements
 	protected void finalize()
 	{
 		//mExit = true;
-		
+
 		sendCmdStop();
 		//mOp = false;	// eric 2012.11.23
 		byeBluetoothDevice();
-		
+
 		mLampDetectKill.stopBlink();
 		mLampDetectLock.stopBlink();
 		mLampDetectReadWrite.stopBlink();
@@ -2465,10 +2451,10 @@ public class RFIDHostActivity extends BluetoothActivity implements
 
 		if( mLogMng != null )
 			mLogMng.finalize();
-		
+
 		super.finalize();
 	}
-	
+
 	public void closeApp()
 	{
 		finalize();
@@ -2490,6 +2476,6 @@ public class RFIDHostActivity extends BluetoothActivity implements
 		RFIDHostActivity.this.postCloseApp();
 		RFIDHostActivity.this.closeApp();
 		RFIDHostActivity.this.finish();
-		
+
 	}
 }

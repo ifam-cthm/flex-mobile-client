@@ -97,19 +97,12 @@ public class BluetoothActivity extends TabActivity
 	public void onCreate( Bundle savedInstanceState )
 	{
 		super.onCreate(savedInstanceState);
-
 		int mode = R900Status.getInterfaceMode();
-		
-		//mMapBtDevice = new HashMap<String, BluetoothDevice>();
 		mR900Manager = new R900Manager( mHandler );
-		
-		// ---
 		IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
 		registerReceiver(mReceiver, filter);
-		
 		filter = new IntentFilter(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
 		registerReceiver(mReceiver, filter);
-		
 		if( mR900Manager.isBluetoothEnabled() == false )
 		{
 			Intent discoverableIntent = new Intent(
@@ -173,9 +166,7 @@ public class BluetoothActivity extends TabActivity
 		if( mR900Manager != null && address != null )
 			mR900Manager.connectToBluetoothDevice(address, uuid);
 	}
-	
-	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Send
-	// Command
+
 	public void sendCmdOpenInterface1()
 	{
 		if( mR900Manager != null )
