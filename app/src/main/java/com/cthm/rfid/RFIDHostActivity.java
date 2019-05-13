@@ -1,5 +1,15 @@
 package com.cthm.rfid;
 
+import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.SocketTimeoutException;
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -46,6 +56,9 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ProgressBar;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class RFIDHostActivity extends BluetoothActivity implements
 		View.OnClickListener, OnBtEventListener,
@@ -969,6 +982,37 @@ public class RFIDHostActivity extends BluetoothActivity implements
 				{
 					( (Button) v ).setText("INVENTORY");
 					sendCmdStop();
+
+					JSONObject tags = new JSONObject();
+
+
+					try{
+						String url = "http://localhost:8080/flex-site/Back/public/cadastrar_tag";
+						URL urlObj = new URL(url);
+						HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
+						conn.setDoOutput(true);
+						conn.setRequestMethod("POST");
+						conn.setRequestProperty("Accept-Charset", "UTF-8");
+
+						tags.put("tag", mArrTag.get(1));
+
+						conn.setReadTimeout(10000);
+						conn.setConnectTimeout(15000);
+
+						conn.connect();
+
+						DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
+						wr.writeBytes(tags.toString());
+						wr.flush();
+						wr.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+						Log.d(TAG, "Conexao : " + "Não conectou");
+					} catch (JSONException e){
+						e.printStackTrace();;
+					}
+
+
 					//mOp = false;	// eric 2012.11.23
 					//R900Status.setOperationMode(0);	// eric 2012.11.29
 					mInventLampTx.setLamp(LampView.LAMP_GRAY);
@@ -1368,35 +1412,7 @@ public class RFIDHostActivity extends BluetoothActivity implements
 
 	private LockPattern getLockPattern()
 	{
-		/*
-		 * int mark; short lock_mask = 0; short lock_enable = 0;
-		 *
-		 * //--- mark = mSpinKillPassword.getSelectedItemPosition(); lock_enable
-		 * |= SWAPLSB2( mark != 0 ? mark - 1 : 0 ); lock_mask |= ( mark == 0 ? 0
-		 * : 3 );
-		 *
-		 * //--- lock_enable <<= 2; lock_mask <<= 2; mark =
-		 * mSpinAccessPassword.getSelectedItemPosition(); lock_enable |=
-		 * SWAPLSB2( mark != 0 ? mark - 1 : 0 ); lock_mask |= (mark == 0 ? 0 :
-		 * 3);
-		 *
-		 * //--- lock_enable <<= 2; lock_mask <<= 2; mark =
-		 * mSpinUiiMem.getSelectedItemPosition(); lock_enable |= SWAPLSB2( mark
-		 * != 0 ? mark - 1 : 0 ); lock_mask |= (mark == 0 ? 0 : 3);
-		 *
-		 * //--- lock_enable <<= 2; lock_mask <<= 2; mark =
-		 * mSpinTidMem.getSelectedItemPosition(); lock_enable |= SWAPLSB2( mark
-		 * != 0 ? mark - 1 : 0 ); lock_mask |= (mark == 0 ? 0 : 3);
-		 *
-		 * //--- lock_enable <<= 2; lock_mask <<= 2; mark =
-		 * mSpinUserMem.getSelectedItemPosition(); lock_enable |= SWAPLSB2( mark
-		 * != 0 ? mark - 1 : 0 ); lock_mask |= (mark == 0 ? 0 : 3);
-		 *
-		 * //--- LockPattern lockPattern = new LockPattern();
-		 * lockPattern.lockMask = lock_mask; lockPattern.lockEnable =
-		 * lock_enable; return lockPattern;
-		 */
-		int index = 0;
+	int index = 0;
 		LockPattern lockPattern = new LockPattern();
 		lockPattern.lockPerma = false;
 
